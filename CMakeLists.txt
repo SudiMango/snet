@@ -12,3 +12,13 @@ file(GLOB_RECURSE SNET_SOURCES CONFIGURE_DEPENDS
 add_library(snet ${SNET_SOURCES})
 
 target_include_directories(snet PUBLIC include)
+
+add_executable(udp_chat_server
+  examples/udp_chat/server.cpp
+)
+target_link_libraries(udp_chat_server PRIVATE snet)
+
+add_executable(udp_chat_client
+  examples/udp_chat/client.cpp
+)
+target_link_libraries(udp_chat_client PRIVATE snet)
